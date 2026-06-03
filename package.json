@@ -1,0 +1,44 @@
+{
+  "name": "pulsewire-nextjs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Full-stack personalized news portal with Next.js 16, MongoDB, and AI-powered recommendations",
+  "author": "Farhad Nuri <farhadnuri559@gmail.com>",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "type-check": "tsc --noEmit",
+    "generate-secret": "node scripts/generate-auth-secret.js",
+    "cleanup-indexes": "node scripts/cleanup-indexes.js"
+  },
+  "dependencies": {
+    "@better-auth/mongo-adapter": "^1.6.14",
+    "bcryptjs": "^3.0.3",
+    "better-auth": "^1.6.13",
+    "date-fns": "^4.4.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongodb": "^7.2.0",
+    "mongoose": "^9.6.3",
+    "next": "16.2.7",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "redis": "^6.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.7",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "kysely": "0.28.12"
+  }
+}
