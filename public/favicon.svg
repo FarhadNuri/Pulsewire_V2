@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="6" fill="#0f1724"/>
+  <rect width="32" height="32" rx="6" fill="none" stroke="#e8192c" stroke-width="1.5"/>
+  <text x="16" y="23" text-anchor="middle" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="16" letter-spacing="-2">
+    <tspan fill="#e8192c">P</tspan><tspan fill="#ffffff">W</tspan>
+  </text>
+</svg>
