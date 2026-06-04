@@ -107,17 +107,16 @@ PulseWire implements a sophisticated Redis caching layer that dramatically reduc
 User Request → Check Redis Cache → Cache Hit? Return Data : Fetch from API → Store in Cache → Return Data
 ```
 
-**2. Layered Caching**
-- **News Articles**: Cached for 5 minutes per category
-- **User Preferences**: Cached for 1 hour
-- **Analytics Data**: Cached for 15 minutes
+**2. Caching Strategy**
+- **News Articles**: Cached for 6 hours (21,600 seconds)
+- **Cache Key Pattern**: `news:category:country:lang:max`
+- **Automatic Invalidation**: TTL-based expiration
 
 **3. Smart Cache Keys**
 ```typescript
-news:category:technology      // News by category
-news:query:bitcoin           // Search results
-user:123:preferences         // User preferences
-recommendations:456          // Personalized recommendations
+news:technology:us:en:10     // News by category and parameters
+news:business:us:en:10       // Different categories cached separately
+news:sports:us:en:10         // Each combination has its own cache
 ```
 
 ### Performance Improvements
@@ -131,15 +130,16 @@ recommendations:456          // Personalized recommendations
 
 ### Real-World Impact
 
-**Scenario**: 100 users browse "Technology" category
+**Scenario**: 100 users browse "Technology" news within 6 hours
 - **Without Cache**: 100 API calls to GNews
 - **With Cache**: 1 API call, 99 cache hits
 - **Result**: 99% reduction in external requests
 
-**Cache Invalidation Strategy**
-- Time-based expiration (TTL)
-- Manual cache clearing via admin endpoint
-- Category-specific cache busting
+**Cache Strategy Benefits**
+- 6-hour TTL ensures fresh content while minimizing API usage
+- Different categories cached independently
+- Automatic expiration prevents stale data
+- Manual cache clearing available via admin endpoint
 
 ---
 
