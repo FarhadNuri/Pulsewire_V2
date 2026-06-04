@@ -8,6 +8,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "PulseWire - Your Personalized News Portal",
   description: "Stay informed with personalized news from around the world",
+  icons: {
+    icon: '/favicon.svg',
+  },
 };
 
 export const viewport: Viewport = {

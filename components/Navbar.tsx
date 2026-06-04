@@ -38,9 +38,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4 py-3 md:py-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" onClick={handleLogoClick} className="text-xl md:text-2xl font-bold">
-            <span className="text-red-600">PULSE</span>
-            <span className="text-white">WIRE</span>
+          <Link href="/" onClick={handleLogoClick} className="flex items-center gap-2 md:gap-3">
+            <img src="/logo.svg" alt="PulseWire Logo" className="w-8 h-8 md:w-10 md:h-10" />
+            <span className="text-xl md:text-2xl font-bold">
+              <span className="text-red-600">PULSE</span>
+              <span className="text-white">WIRE</span>
+            </span>
           </Link>
 
           <nav className="hidden md:flex items-center gap-2 lg:gap-4">

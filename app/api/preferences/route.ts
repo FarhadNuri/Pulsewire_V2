@@ -85,11 +85,20 @@ export async function PUT(request: NextRequest) {
         },
       });
     } else {
-      userDoc = await User.findOneAndUpdate(
+      const updatedUser = await User.findOneAndUpdate(
         { email: user.email },
         { $set: updateData },
         { new: true, runValidators: true }
       );
+      
+      if (!updatedUser) {
+        return NextResponse.json(
+          { success: false, message: 'Failed to update user' },
+          { status: 500 }
+        );
+      }
+      
+      userDoc = updatedUser;
     }
 
     return NextResponse.json({

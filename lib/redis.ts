@@ -1,7 +1,6 @@
 import { createClient } from 'redis';
 
-// Redis client singleton
-let redisClient: ReturnType<typeof createClient> | null = null;
+let redisClient: any = null;
 
 export async function getRedisClient() {
   if (redisClient && redisClient.isOpen) {
@@ -17,7 +16,7 @@ export async function getRedisClient() {
             console.error('Redis: Too many reconnection attempts');
             return new Error('Redis reconnection failed');
           }
-          return retries * 100; // exponential backoff
+          return retries * 100; 
         },
       },
     });
@@ -35,16 +34,10 @@ export async function getRedisClient() {
     return client;
   } catch (error) {
     console.error('Failed to connect to Redis:', error);
-    // Return null if Redis is not available (graceful degradation)
     return null;
   }
 }
 
-/**
- * Get cached data from Redis
- * @param key - Cache key
- * @returns Parsed data or null if not found
- */
 export async function getCachedData<T>(key: string): Promise<T | null> {
   try {
     const client = await getRedisClient();
@@ -60,16 +53,10 @@ export async function getCachedData<T>(key: string): Promise<T | null> {
   }
 }
 
-/**
- * Set data in Redis cache with TTL
- * @param key - Cache key
- * @param data - Data to cache
- * @param ttlSeconds - Time to live in seconds (default: 6 hours)
- */
 export async function setCachedData(
   key: string,
   data: any,
-  ttlSeconds: number = 21600 // 6 hours default
+  ttlSeconds: number = 21600
 ): Promise<boolean> {
   try {
     const client = await getRedisClient();
@@ -83,10 +70,6 @@ export async function setCachedData(
   }
 }
 
-/**
- * Delete cached data from Redis
- * @param key - Cache key or pattern
- */
 export async function deleteCachedData(key: string): Promise<boolean> {
   try {
     const client = await getRedisClient();
@@ -100,10 +83,6 @@ export async function deleteCachedData(key: string): Promise<boolean> {
   }
 }
 
-/**
- * Delete multiple keys matching a pattern
- * @param pattern - Redis key pattern (e.g., "news:*")
- */
 export async function deleteCachedPattern(pattern: string): Promise<number> {
   try {
     const client = await getRedisClient();
@@ -120,9 +99,6 @@ export async function deleteCachedPattern(pattern: string): Promise<number> {
   }
 }
 
-/**
- * Get cache statistics
- */
 export async function getCacheStats(): Promise<{
   connected: boolean;
   keys: number;
@@ -135,7 +111,6 @@ export async function getCacheStats(): Promise<{
     const info = await client.info('memory');
     const keys = await client.dbSize();
     
-    // Parse memory usage from info string
     const memoryMatch = info.match(/used_memory_human:([^\r\n]+)/);
     const memory = memoryMatch ? memoryMatch[1] : 'unknown';
 
@@ -150,9 +125,6 @@ export async function getCacheStats(): Promise<{
   }
 }
 
-/**
- * Close Redis connection (for graceful shutdown)
- */
 export async function closeRedisConnection(): Promise<void> {
   if (redisClient && redisClient.isOpen) {
     await redisClient.quit();
