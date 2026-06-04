@@ -30,13 +30,13 @@ PulseWire is a production-ready news aggregation platform that delivers personal
 
 ## Key Design Patterns
 
-**Singleton Pattern** - MongoDB and Redis connections use singleton pattern to prevent connection pooling issues
+- **Singleton Pattern** - MongoDB and Redis connections use singleton pattern to prevent connection pooling issues
 
-**Repository Pattern** - Mongoose models act as data repositories with clear separation of concerns
+- **Repository Pattern** - Mongoose models act as data repositories with clear separation of concerns
 
-**Middleware Pattern** - Authentication middleware for protected API routes
+- **Middleware Pattern** - Authentication middleware for protected API routes
 
-**Caching Strategy** - Cache-aside pattern with TTL-based invalidation
+- **Caching Strategy** - Cache-aside pattern with TTL-based invalidation
 
 
 
@@ -212,26 +212,6 @@ GNEWS_API_KEY=your-gnews-api-key
 
 ### Cache Management
 - `POST /api/cache` - Clear cache (admin)
-
----
-
-## Key Features Explained
-
-### 1. Personalized Recommendations
-Analyzes user reading history using MongoDB aggregation pipeline to identify favorite categories and suggests relevant articles.
-
-### 2. Reading History Tracking
-Automatically logs every article view with timestamp, enabling analytics and personalized content delivery.
-
-### 3. Smart Bookmarking
-Save articles with custom notes and tags for easy organization and retrieval.
-
-### 4. User Dashboard
-Real-time analytics showing:
-- Total articles read
-- Favorite categories
-- Weekly reading trends
-- Bookmark statistics
 
 ---
 
