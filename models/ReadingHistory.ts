@@ -9,7 +9,7 @@ export interface IReadingHistory extends Document {
     source: string;
   };
   readAt: Date;
-  readDuration?: number; // in seconds
+  readDuration?: number; 
 }
 
 const ReadingHistorySchema = new Schema<IReadingHistory>(
@@ -38,7 +38,7 @@ const ReadingHistorySchema = new Schema<IReadingHistory>(
   }
 );
 
-// Compound indexes for analytics
+
 ReadingHistorySchema.index({ userId: 1, readAt: -1 });
 ReadingHistorySchema.index({ userId: 1, 'article.category': 1 });
 

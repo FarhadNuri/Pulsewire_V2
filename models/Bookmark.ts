@@ -41,7 +41,6 @@ const BookmarkSchema = new Schema<IBookmark>(
   }
 );
 
-// Compound index for efficient queries
 BookmarkSchema.index({ userId: 1, createdAt: -1 });
 BookmarkSchema.index({ userId: 1, 'article.category': 1 });
 
