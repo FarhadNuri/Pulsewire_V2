@@ -8,6 +8,15 @@ A modern, full-stack news portal built with Next.js 16, featuring intelligent ca
 PulseWire is a production-ready news aggregation platform that delivers personalized content to users based on their reading behavior. Built with modern web technologies and optimized for performance, it uses Redis caching to reduce API calls by 85% while providing real-time news updates. The application features secure authentication, intelligent recommendations, and comprehensive analytics—all wrapped in a responsive, mobile-first design.
 
 
+## Live Application
+
+> Explore Pulse Wire in action:
+>
+> **🌐 https://pulsewirev2.vercel.app/**
+>
+> Discover news, save favorites, track reading habits & unlock personalized recommendations.
+
+
 ## Features
 
 ### Core Functionality
