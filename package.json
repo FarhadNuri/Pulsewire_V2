@@ -11,7 +11,8 @@
     "lint": "eslint",
     "type-check": "tsc --noEmit",
     "generate-secret": "node scripts/generate-auth-secret.js",
-    "cleanup-indexes": "node scripts/cleanup-indexes.js"
+    "cleanup-indexes": "node scripts/cleanup-indexes.js",
+    "drop-username-index": "node scripts/drop-username-index.js"
   },
   "dependencies": {
     "@better-auth/mongo-adapter": "^1.6.14",

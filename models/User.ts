@@ -4,6 +4,7 @@ export interface IUser extends Document {
   name: string;
   email: string;
   password: string;
+  username?: string;
   preferences: {
     categories: string[];
     language: string;
@@ -32,6 +33,11 @@ const UserSchema = new Schema<IUser>(
       required: false,
       minlength: 6,
       default: 'no-password-set',
+    },
+    username: {
+      type: String,
+      required: false,
+      sparse: true,
     },
     preferences: {
       categories: {
