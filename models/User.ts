@@ -29,8 +29,9 @@ const UserSchema = new Schema<IUser>(
     },
     password: {
       type: String,
-      required: [true, 'Password is required'],
+      required: false,
       minlength: 6,
+      default: 'no-password-set',
     },
     preferences: {
       categories: {

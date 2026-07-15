@@ -77,7 +77,6 @@ export async function PUT(request: NextRequest) {
       userDoc = await User.create({
         email: user.email,
         name: user.name,
-        password: 'oauth',
         preferences: {
           categories: categories || ['general'],
           language: language || 'en',
